@@ -11,13 +11,13 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="IncomeTimer" type="Timer" parent="."]
-wait_time = 0.2
+[node name="ProductionTimer" type="Timer" parent="."]
+wait_time = 0.05
 autostart = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 293.0
+margin_bottom = 458.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -29,13 +29,14 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 0.0
-margin_right = 122.0
-margin_bottom = 150.0
+margin_right = 293.0
+margin_bottom = 160.0
 business_name = "Lemonade Stand"
 initial_num_shops = 1
 base_cost = 3.738
 cost_factor = 1.07
-income = 1.0
+prod_time = 600
+revenue = 1.0
 
 [node name="Newspaper" parent="VBoxContainer" groups=[
 "shop",
@@ -43,13 +44,14 @@ income = 1.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
-margin_top = 154.0
-margin_right = 122.0
-margin_bottom = 304.0
+margin_top = 164.0
+margin_right = 293.0
+margin_bottom = 324.0
 business_name = "Newspaper Delivery"
 base_cost = 60.0
 cost_factor = 1.15
-income = 7.0
+prod_time = 3000
+revenue = 60.0
 
 [node name="Carwash" parent="VBoxContainer" groups=[
 "shop",
@@ -57,10 +59,41 @@ income = 7.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
-margin_top = 308.0
-margin_right = 122.0
-margin_bottom = 458.0
+margin_top = 328.0
+margin_right = 293.0
+margin_bottom = 488.0
 business_name = "Car Wash"
 base_cost = 720.0
 cost_factor = 1.14
-income = 199.0
+prod_time = 6000
+revenue = 540.0
+
+[node name="Pizza" parent="VBoxContainer" groups=[
+"shop",
+] instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 492.0
+margin_right = 293.0
+margin_bottom = 652.0
+business_name = "Pizza Delivery"
+base_cost = 8640.0
+cost_factor = 1.13
+prod_time = 12000
+revenue = 4320.0
+
+[node name="Test" parent="VBoxContainer" groups=[
+"shop",
+] instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 656.0
+margin_right = 293.0
+margin_bottom = 816.0
+business_name = "Test"
+base_cost = 100.0
+cost_factor = 1.03
+prod_time = 1536000
+revenue = 100000.0

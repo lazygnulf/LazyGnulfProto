@@ -1,22 +1,17 @@
 extends Control
 
+export (String) var business_name = "[Business Name]"
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+onready var production_timer = $ProductionTimer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var timer = get_node("IncomeTimer")
 	var account = get_account()
 	var shops = get_tree().get_nodes_in_group("shop")
 	for shop in shops:
-		timer.connect("timeout", shop, "_on_timer_timeout")
+		production_timer.connect("timeout", shop, "_on_production_timer")
 		shop.set_account(account)
 		
-
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
