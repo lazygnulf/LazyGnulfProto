@@ -15,13 +15,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Conti" type="VBoxContainer" parent="."]
+[node name="VBox" type="VBoxContainer" parent="."]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 218.0
 margin_bottom = 143.0
 
-[node name="NameLabel" type="Label" parent="Conti"]
+[node name="NameLabel" type="Label" parent="VBox"]
 margin_right = 211.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 0, 20 )
@@ -32,16 +32,60 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ShopsLabel" type="Label" parent="Conti"]
+[node name="HBox" type="HBoxContainer" parent="VBox"]
 margin_top = 24.0
 margin_right = 211.0
 margin_bottom = 38.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NumShopsLabel" type="Label" parent="VBox/HBox"]
+margin_right = 46.0
+margin_bottom = 14.0
+text = "Shops: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NumShops" type="Label" parent="VBox/HBox"]
+margin_left = 50.0
+margin_right = 66.0
+margin_bottom = 14.0
 text = "[0]"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="BuyShops" type="Button" parent="Conti"]
+[node name="HBox2" type="HBoxContainer" parent="VBox"]
 margin_top = 42.0
 margin_right = 211.0
-margin_bottom = 62.0
+margin_bottom = 56.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShopCostLabel" type="Label" parent="VBox/HBox2"]
+margin_right = 71.0
+margin_bottom = 14.0
+text = "Shop Cost: "
+
+[node name="ShopCost" type="Label" parent="VBox/HBox2"]
+margin_left = 75.0
+margin_right = 91.0
+margin_bottom = 14.0
+text = "[0]"
+
+[node name="BuyShops" type="Button" parent="VBox"]
+margin_top = 60.0
+margin_right = 211.0
+margin_bottom = 80.0
 text = "Buy Shop"
+
+[node name="Produce" type="Button" parent="VBox"]
+margin_top = 84.0
+margin_right = 211.0
+margin_bottom = 104.0
+text = "Produce"

@@ -33,6 +33,8 @@ margin_right = 122.0
 margin_bottom = 150.0
 business_name = "Lemonade Stand"
 initial_num_shops = 1
+base_cost = 3.738
+cost_factor = 1.07
 income = 1.0
 
 [node name="Newspaper" parent="VBoxContainer" groups=[
@@ -45,6 +47,8 @@ margin_top = 154.0
 margin_right = 122.0
 margin_bottom = 304.0
 business_name = "Newspaper Delivery"
+base_cost = 60.0
+cost_factor = 1.15
 income = 7.0
 
 [node name="Carwash" parent="VBoxContainer" groups=[
@@ -57,4 +61,6 @@ margin_top = 308.0
 margin_right = 122.0
 margin_bottom = 458.0
 business_name = "Car Wash"
+base_cost = 720.0
+cost_factor = 1.14
 income = 199.0

@@ -4,13 +4,16 @@ extends Control
 
 export (String) var business_name = "[Business Name]"
 export (int) var initial_num_shops = 0
+export (float) var base_cost = 0.0
+export (float) var cost_factor = 0.0
 
 export (float) var income = 0.0
 export (float) var income_rate = 0.0 # in sec
 
-onready var name_label = $Conti/NameLabel
-onready var shops_label = $Conti/ShopsLabel
-onready var buy_shops_button = $Conti/BuyShops
+onready var name_label = $VBox/NameLabel
+onready var shops_label = $VBox/HBox/NumShops
+onready var shop_cost_label = $VBox/HBox2/ShopCost
+onready var buy_shops_button = $VBox/BuyShops
 
 var num_shops: int = 0
 
@@ -26,15 +29,18 @@ var account: Node = null
 
 func _ready():
 	num_shops = initial_num_shops
-	name_label.text = business_name
-	shops_label.text = str(num_shops)
 	buy_shops_button.connect("pressed", self, "_on_BuyShops_pressed")
+	_update_ui()
 	#var timer = get_shops_node().find_node("IncomeTimer")
 	#timer.connect("timeout", self, "_on_timer_timeout")
 	
-	
-#func _process(delta):
-#	pass
+func next_shop_cost() -> float:
+	return base_cost * pow(cost_factor, num_shops)
+
+func _update_ui() -> void:
+	name_label.text = business_name
+	shops_label.text = str(num_shops)
+	shop_cost_label.text = str(next_shop_cost())
 
 func set_account(acc):
 	account = acc
@@ -57,4 +63,4 @@ func get_shops_node():
 
 func _on_BuyShops_pressed():
 	num_shops += 1
-	shops_label.text = str(num_shops)
+	_update_ui()
