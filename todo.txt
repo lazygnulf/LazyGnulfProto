@@ -1,0 +1,30 @@
+Eigenschaften Business
+======================
+
+- Name (z.B. "Lemonade Stand") (business_name)
+- Anzahl Shops (num_shops)
+- Basis-Kosten (base_cost)
+- Kosten-Faktor (cost_factor)
+- Basis-Produktionszeit (base_prod_time)
+- Basis-Umsatz (base_revenue)
+
+
+Berechnungen / abgeleitete Eigenschaften
+========================================
+- Preis für Shop #n: base_cost * cost_factor^(n-1)
+- aktueller Umsatz (pro Produktionszykel): num_shops * base_revenue
+
+
+Anzeige/Controls für ein Business
+=================================
+- Display: business_name
+- Display: num_shops
+- Button: Buy Shop / Preis; verfügbar nur wenn genug Geld
+- Button: Produce; verfügbar nur wenn keine Produktion läuft
+- Display: aktueller Umsatz
+- Display: Fortschritt bis zum nächsten Umsatz (Ablauf Produktionszykel)
+
+Todo
+====
+- Mechanismus zur Verkürzung der Produktionszeit
+- Kauf von mehreren Shops (1/10/100/Next/Max)

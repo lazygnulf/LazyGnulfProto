@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Business.gd" type="Script" id=1]
+
+[node name="Business" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -2.0
+margin_right = -795.0
+margin_bottom = -452.0
+rect_min_size = Vector2( 0, 150 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Conti" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 218.0
+margin_bottom = 143.0
+
+[node name="NameLabel" type="Label" parent="Conti"]
+margin_right = 211.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+text = "[Business Name]"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShopsLabel" type="Label" parent="Conti"]
+margin_top = 24.0
+margin_right = 211.0
+margin_bottom = 38.0
+text = "[0]"
+align = 1
+valign = 1
+
+[node name="BuyShops" type="Button" parent="Conti"]
+margin_top = 42.0
+margin_right = 211.0
+margin_bottom = 62.0
+text = "Buy Shop"
