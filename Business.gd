@@ -15,10 +15,6 @@ export (int) var prod_time = 0
 export (float) var revenue = 0.0
 export (float) var auto_cost
 
-
-
-
-
 var num_shops: int = 0
 var in_production: bool = false
 var production_progress: int = 0
@@ -58,11 +54,24 @@ func _ready() -> void:
 	_update_ui()
 
 	
-# compute cost of next shop purchase according to current buy multiplier
+# compute cost of next shops purchase according to current buy multiplier
 func next_purchase_cost() -> float:
-	return base_cost * pow(cost_factor, num_shops)
-
+	# cost of the next single shop
+	var current_cost: float = base_cost * pow(cost_factor, num_shops)
 	
+	var num_shops_to_purchase: int = 1
+	match Bank.buy_multiplier:
+		Bank.BuyMultiplier.BUY_1:
+			num_shops_to_purchase = 1
+		Bank.BuyMultiplier.BUY_10:
+			num_shops_to_purchase = 10
+		Bank.BuyMultiplier.BUY_100:
+			num_shops_to_purchase = 100
+	
+	# compute cost using the geometric series formula
+	return current_cost * (1.0-pow(cost_factor, num_shops_to_purchase)) / (1.0-cost_factor)
+
+
 func next_revenue() -> float:
 	return num_shops * revenue
 
@@ -81,12 +90,17 @@ func _update_ui() -> void:
 
 
 func _get_buy_shops_text() -> String:
-	var text = "Buy (1x)"
+	var text: String = "Buy (x"
+	match Bank.buy_multiplier:
+		Bank.BuyMultiplier.BUY_1:
+			text += "1"
+		Bank.BuyMultiplier.BUY_10:
+			text += "10"
+		Bank.BuyMultiplier.BUY_100:
+			text += "100"
+	text += ")"
+	
 	return text
-
-
-func _on_balance_changed(new_balance: float) -> void:
-	_update_ui()	
 
 
 func _on_system_ticked(delta: int) -> void:
@@ -101,9 +115,20 @@ func _on_system_ticked(delta: int) -> void:
 			production_progress = 0
 		_update_ui()
 
+
+func _on_balance_changed(new_balance: float) -> void:
+	_update_ui()	
+
+
 func on_buy_shops_pressed() -> void:
 	if Bank.withdraw(next_purchase_cost()):
-		num_shops += 1
+		match Bank.buy_multiplier:
+			Bank.BuyMultiplier.BUY_1:
+				num_shops += 1
+			Bank.BuyMultiplier.BUY_10:
+				num_shops += 10
+			Bank.BuyMultiplier.BUY_100:
+				num_shops += 100
 		_update_ui()
 	
 		

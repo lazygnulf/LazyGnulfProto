@@ -108,7 +108,7 @@ margin_left = 28.0
 margin_right = 99.0
 margin_bottom = 20.0
 size_flags_horizontal = 4
-text = "Buy Shop"
+text = "Buy (x ...)"
 
 [node name="BuyAuto" type="Button" parent="VBox/HBox4"]
 margin_left = 103.0
