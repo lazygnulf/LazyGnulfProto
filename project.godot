@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Control",
+"class": "Business",
+"language": "GDScript",
+"path": "res://business.gd"
+}, {
+"base": "Control",
+"class": "Game",
+"language": "GDScript",
+"path": "res://game.gd"
+} ]
 _global_script_class_icons={
-
+"Business": "",
+"Game": ""
 }
 
 [application]
@@ -18,6 +29,12 @@ _global_script_class_icons={
 config/name="Shop Test"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Signals="*res://Autoload/signals.gd"
+Bank="*res://Autoload/bank.gd"
+Util="*res://Autoload/util.gd"
 
 [display]
 

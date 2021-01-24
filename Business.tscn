@@ -1,14 +1,14 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Business.gd" type="Script" id=1]
+[ext_resource path="res://business.gd" type="Script" id=1]
 
 [node name="Business" type="PanelContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = -2.0
-margin_right = -795.0
-margin_bottom = -452.0
+margin_left = 0.194702
+margin_top = 0.76532
+margin_right = -807.805
+margin_bottom = -927.235
 rect_min_size = Vector2( 0, 150 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -18,11 +18,11 @@ __meta__ = {
 [node name="VBox" type="VBoxContainer" parent="."]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 218.0
-margin_bottom = 661.0
+margin_right = 209.0
+margin_bottom = 183.0
 
 [node name="NameLabel" type="Label" parent="VBox"]
-margin_right = 211.0
+margin_right = 202.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 0, 20 )
 text = "[Business Name]"
@@ -34,7 +34,7 @@ __meta__ = {
 
 [node name="HBox" type="HBoxContainer" parent="VBox"]
 margin_top = 24.0
-margin_right = 211.0
+margin_right = 202.0
 margin_bottom = 38.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -61,7 +61,7 @@ __meta__ = {
 
 [node name="HBox2" type="HBoxContainer" parent="VBox"]
 margin_top = 42.0
-margin_right = 211.0
+margin_right = 202.0
 margin_bottom = 56.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -80,7 +80,7 @@ text = "[0]"
 
 [node name="HBox3" type="HBoxContainer" parent="VBox"]
 margin_top = 60.0
-margin_right = 211.0
+margin_right = 202.0
 margin_bottom = 74.0
 
 [node name="RevenueLabel" type="Label" parent="VBox/HBox3"]
@@ -97,21 +97,34 @@ margin_right = 83.0
 margin_bottom = 14.0
 text = "[0]"
 
-[node name="BuyShops" type="Button" parent="VBox"]
+[node name="HBox4" type="HBoxContainer" parent="VBox"]
 margin_top = 78.0
-margin_right = 211.0
+margin_right = 202.0
 margin_bottom = 98.0
+alignment = 1
+
+[node name="BuyShops" type="Button" parent="VBox/HBox4"]
+margin_left = 28.0
+margin_right = 99.0
+margin_bottom = 20.0
+size_flags_horizontal = 4
 text = "Buy Shop"
+
+[node name="BuyAuto" type="Button" parent="VBox/HBox4"]
+margin_left = 103.0
+margin_right = 173.0
+margin_bottom = 20.0
+text = "Buy Auto"
 
 [node name="Produce" type="Button" parent="VBox"]
 margin_top = 102.0
-margin_right = 211.0
+margin_right = 202.0
 margin_bottom = 122.0
 text = "Produce"
 
 [node name="ProductionProgress" type="ProgressBar" parent="VBox"]
 margin_top = 126.0
-margin_right = 211.0
+margin_right = 202.0
 margin_bottom = 146.0
 rect_min_size = Vector2( 0, 20 )
 value = 17.4

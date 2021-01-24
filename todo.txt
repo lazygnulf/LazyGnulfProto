@@ -26,5 +26,12 @@ Anzeige/Controls für ein Business
 
 Todo
 ====
-- Mechanismus zur Verkürzung der Produktionszeit
 - Kauf von mehreren Shops (1/10/100/Next/Max)
+- Mechanismus zur Verkürzung der Produktionszeit
+- Abspeichern/Laden des Spielstands
+- "Offline"-Produktion
+
+Done
+====
+- Schönere Darstellung des Gesamt-Geldes
+- Mechanismus für Auto-Produce (Manager)

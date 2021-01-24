@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://buy_mode.gd" type="Script" id=1]
+
+
+[node name="BuyMultiplier" type="PanelContainer"]
+margin_right = 14.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 100, 50 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyMultiplierButton" type="Button" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 93.0
+margin_bottom = 43.0
+text = "[Amount]"
