@@ -49,12 +49,15 @@ func _init() -> void:
 
 func _ready() -> void:
 	num_shops = initial_num_shops
+	buy_auto_button.text = "Auto (" + str(auto_cost) + ")"
 	buy_shops_button.connect("pressed", self, "on_buy_shops_pressed")
 	buy_auto_button.connect("pressed", self, "on_buy_auto_pressed")
 	produce_button.connect("pressed", self, "_on_Produce_pressed")
 	Signals.connect("system_ticked", self, "_on_system_ticked")
 	Signals.connect("buy_multiplier_changed", self, "_on_buy_multiplier_changed")
 	Signals.connect("balance_changed", self, "_on_balance_changed")
+	
+	
 	_update_ui()
 
 	
@@ -85,10 +88,10 @@ func _update_ui() -> void:
 	shop_cost_label.text = str(next_purchase_cost(_get_num_shops_next_purchase()))
 	revenue_label.text = str(next_revenue())
 	
-	buy_shops_button.text = "Buy (" + str(_get_num_shops_next_purchase()) + ")"
+	buy_shops_button.text = "Buy (x" + str(_get_num_shops_next_purchase()) + ")"
 	buy_shops_button.disabled = _get_num_shops_next_purchase() == 0 || Bank.balance < next_purchase_cost(_get_num_shops_next_purchase())
-	
-	buy_auto_button.disabled = has_auto || num_shops == 0 || Bank.balance < auto_cost
+	if !has_auto:
+		buy_auto_button.disabled = num_shops == 0 || Bank.balance < auto_cost
 	produce_button.disabled = num_shops == 0 || in_production
 	production_progressbar.value = float(production_progress)*100 / prod_time
 	production_progressbar_label.text = str(production_progress/1000) + " / " + str(prod_time/1000)
@@ -135,6 +138,7 @@ func on_buy_shops_pressed() -> void:
 		
 func on_buy_auto_pressed() -> void:
 	if !has_auto && Bank.withdraw(auto_cost):
+		buy_auto_button.visible = false
 		has_auto = true
 		in_production = true
 		_update_ui()
