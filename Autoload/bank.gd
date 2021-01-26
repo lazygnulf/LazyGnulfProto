@@ -1,6 +1,6 @@
 extends Node
 
-enum BuyMultiplier {BUY_1, BUY_10, BUY_100, BUY_UNDEF}
+enum BuyMultiplier {BUY_1, BUY_10, BUY_100, BUY_MAX, BUY_UNDEF}
 
 var balance: float = 0.0
 var buy_multiplier: int = BuyMultiplier.BUY_1

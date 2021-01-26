@@ -68,13 +68,13 @@ __meta__ = {
 }
 
 [node name="ShopCostLabel" type="Label" parent="VBox/HBox2"]
-margin_right = 71.0
+margin_right = 131.0
 margin_bottom = 14.0
-text = "Shop Cost: "
+text = "Next purchase cost: "
 
 [node name="ShopCost" type="Label" parent="VBox/HBox2"]
-margin_left = 75.0
-margin_right = 91.0
+margin_left = 135.0
+margin_right = 151.0
 margin_bottom = 14.0
 text = "[0]"
 
@@ -139,3 +139,8 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="max" type="Label" parent="VBox"]
+margin_top = 150.0
+margin_right = 202.0
+margin_bottom = 164.0

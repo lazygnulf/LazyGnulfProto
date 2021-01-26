@@ -8,6 +8,8 @@ func get_buy_multiplier_text() -> String:
 			return "x10"			
 		Bank.BuyMultiplier.BUY_100:
 			return "x100"
+		Bank.BuyMultiplier.BUY_MAX:
+			return "Max"
 	
 	return "[ERROR]"	
 

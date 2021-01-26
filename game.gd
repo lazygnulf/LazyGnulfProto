@@ -12,7 +12,6 @@ func _ready():
 	system_timer.wait_time = simulation_speed
 	system_timer.connect("timeout", self, "_on_system_ticked")
 
-
 func _on_system_ticked() -> void:
 	var now = OS.get_ticks_msec()
 	Signals.emit_signal("system_ticked", now - _timestamp_last_tick)

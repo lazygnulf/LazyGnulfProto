@@ -20,6 +20,10 @@ var in_production: bool = false
 var production_progress: int = 0
 var has_auto: bool = false
 
+# Maximum number of shops that can be bought; updated every time the bank 
+# balance is changed.
+var max_affordable_shops: int = 0  
+
 # timestamp in msecs of last production start
 var timestamp_production_start: int = 0
 
@@ -55,22 +59,21 @@ func _ready() -> void:
 
 	
 # compute cost of next shops purchase according to current buy multiplier
-func next_purchase_cost() -> float:
+func next_purchase_cost(num_shops_to_buy: int) -> float:
+	if num_shops_to_buy == 0:
+		return 0.0
+	
 	# cost of the next single shop
 	var current_cost: float = base_cost * pow(cost_factor, num_shops)
-	
-	var num_shops_to_purchase: int = 1
-	match Bank.buy_multiplier:
-		Bank.BuyMultiplier.BUY_1:
-			num_shops_to_purchase = 1
-		Bank.BuyMultiplier.BUY_10:
-			num_shops_to_purchase = 10
-		Bank.BuyMultiplier.BUY_100:
-			num_shops_to_purchase = 100
-	
+		
 	# compute cost using the geometric series formula
-	return current_cost * (1.0-pow(cost_factor, num_shops_to_purchase)) / (1.0-cost_factor)
+	return current_cost * (1.0-pow(cost_factor, num_shops_to_buy)) / (1.0-cost_factor)
 
+# compute the maximum number of shops that can be bought
+func compute_max_affordable_shops() -> int:
+	var current_cost: float = base_cost * pow(cost_factor, num_shops)
+	return int(log(1 - (Bank.balance*(1-cost_factor))/current_cost)/log(cost_factor))
+	
 
 func next_revenue() -> float:
 	return num_shops * revenue
@@ -79,29 +82,31 @@ func next_revenue() -> float:
 func _update_ui() -> void:
 	name_label.text = business_name
 	shops_label.text = str(num_shops)
-	shop_cost_label.text = str(next_purchase_cost())
+	shop_cost_label.text = str(next_purchase_cost(_get_num_shops_next_purchase()))
 	revenue_label.text = str(next_revenue())
-	buy_shops_button.text = _get_buy_shops_text()
-	buy_shops_button.disabled = Bank.balance < next_purchase_cost()
+	
+	buy_shops_button.text = "Buy (" + str(_get_num_shops_next_purchase()) + ")"
+	buy_shops_button.disabled = _get_num_shops_next_purchase() == 0 || Bank.balance < next_purchase_cost(_get_num_shops_next_purchase())
+	
 	buy_auto_button.disabled = has_auto || num_shops == 0 || Bank.balance < auto_cost
 	produce_button.disabled = num_shops == 0 || in_production
 	production_progressbar.value = float(production_progress)*100 / prod_time
 	production_progressbar_label.text = str(production_progress/1000) + " / " + str(prod_time/1000)
+	$VBox/max.text = str(compute_max_affordable_shops())
 
 
-func _get_buy_shops_text() -> String:
-	var text: String = "Buy (x"
+func _get_num_shops_next_purchase() -> int:
 	match Bank.buy_multiplier:
 		Bank.BuyMultiplier.BUY_1:
-			text += "1"
+			return 1
 		Bank.BuyMultiplier.BUY_10:
-			text += "10"
+			return 10
 		Bank.BuyMultiplier.BUY_100:
-			text += "100"
-	text += ")"
-	
-	return text
-
+			return 100
+		Bank.BuyMultiplier.BUY_MAX:
+			return max_affordable_shops
+			
+	return 1
 
 func _on_system_ticked(delta: int) -> void:
 	if in_production:
@@ -117,18 +122,14 @@ func _on_system_ticked(delta: int) -> void:
 
 
 func _on_balance_changed(new_balance: float) -> void:
+	max_affordable_shops = compute_max_affordable_shops()
 	_update_ui()	
 
 
 func on_buy_shops_pressed() -> void:
-	if Bank.withdraw(next_purchase_cost()):
-		match Bank.buy_multiplier:
-			Bank.BuyMultiplier.BUY_1:
-				num_shops += 1
-			Bank.BuyMultiplier.BUY_10:
-				num_shops += 10
-			Bank.BuyMultiplier.BUY_100:
-				num_shops += 100
+	var num_shops_to_buy: int = _get_num_shops_next_purchase()
+	if Bank.withdraw(next_purchase_cost(num_shops_to_buy)):
+		num_shops += num_shops_to_buy
 		_update_ui()
 	
 		
