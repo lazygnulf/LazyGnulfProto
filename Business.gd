@@ -32,7 +32,7 @@ var timestamp_production_start: int = 0
 # Variables for sub-nodes.
 # Used to control the UI.
 # ------------------------------------------------------------------------------
-onready var name_label = $VBox/NameLabel
+onready var name_label = $VBox/HBox/NameLabel
 onready var shops_label = $VBox/HBox/NumShops
 onready var shop_cost_label = $VBox/HBox2/ShopCost
 onready var revenue_label = $VBox/HBox3/Revenue
@@ -85,8 +85,8 @@ func next_revenue() -> float:
 func _update_ui() -> void:
 	name_label.text = business_name
 	shops_label.text = str(num_shops)
-	shop_cost_label.text = str(next_purchase_cost(_get_num_shops_next_purchase()))
-	revenue_label.text = str(next_revenue())
+	shop_cost_label.text = Util.float_to_string(next_purchase_cost(_get_num_shops_next_purchase()), Util.NumberFormat.NAME_SHORT)
+	revenue_label.text = Util.float_to_string(next_revenue(), Util.NumberFormat.NAME_SHORT)
 	
 	buy_shops_button.text = "Buy (x" + str(_get_num_shops_next_purchase()) + ")"
 	buy_shops_button.disabled = _get_num_shops_next_purchase() == 0 || Bank.balance < next_purchase_cost(_get_num_shops_next_purchase())
@@ -95,7 +95,6 @@ func _update_ui() -> void:
 	produce_button.disabled = num_shops == 0 || in_production
 	production_progressbar.value = float(production_progress)*100 / prod_time
 	production_progressbar_label.text = str(production_progress/1000) + " / " + str(prod_time/1000)
-	$VBox/max.text = str(compute_max_affordable_shops())
 
 
 func _get_num_shops_next_purchase() -> int:

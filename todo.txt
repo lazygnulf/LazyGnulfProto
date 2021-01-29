@@ -26,12 +26,14 @@ Anzeige/Controls für ein Business
 
 Todo
 ====
-- Kauf von mehreren Shops (1/10/100/Next/Max)
+- #shops rechts oben anzeigen
 - Mechanismus zur Verkürzung der Produktionszeit
 - Abspeichern/Laden des Spielstands
 - "Offline"-Produktion
+- Umnenennungen: "Generator"-Vokabular
 
 Done
 ====
 - Schönere Darstellung des Gesamt-Geldes
 - Mechanismus für Auto-Produce (Manager)
+- Kauf von mehreren Shops (1/10/100/Next/Max)

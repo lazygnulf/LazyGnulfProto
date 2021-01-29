@@ -21,48 +21,40 @@ margin_top = 7.0
 margin_right = 209.0
 margin_bottom = 183.0
 
-[node name="NameLabel" type="Label" parent="VBox"]
+[node name="HBox" type="HBoxContainer" parent="VBox"]
 margin_right = 202.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="VBox/HBox"]
+margin_right = 108.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 0, 20 )
 text = "[Business Name]"
-align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBox" type="HBoxContainer" parent="VBox"]
-margin_top = 24.0
-margin_right = 202.0
-margin_bottom = 38.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NumShopsLabel" type="Label" parent="VBox/HBox"]
-margin_right = 46.0
-margin_bottom = 14.0
-text = "Shops: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="NumShops" type="Label" parent="VBox/HBox"]
-margin_left = 50.0
-margin_right = 66.0
-margin_bottom = 14.0
+margin_left = 112.0
+margin_top = 3.0
+margin_right = 202.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 90, 0 )
 text = "[0]"
-align = 1
+align = 2
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBox2" type="HBoxContainer" parent="VBox"]
-margin_top = 42.0
+margin_top = 24.0
 margin_right = 202.0
-margin_bottom = 56.0
+margin_bottom = 38.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -79,9 +71,9 @@ margin_bottom = 14.0
 text = "[0]"
 
 [node name="HBox3" type="HBoxContainer" parent="VBox"]
-margin_top = 60.0
+margin_top = 42.0
 margin_right = 202.0
-margin_bottom = 74.0
+margin_bottom = 56.0
 
 [node name="RevenueLabel" type="Label" parent="VBox/HBox3"]
 margin_right = 63.0
@@ -98,9 +90,9 @@ margin_bottom = 14.0
 text = "[0]"
 
 [node name="HBox4" type="HBoxContainer" parent="VBox"]
-margin_top = 78.0
+margin_top = 60.0
 margin_right = 202.0
-margin_bottom = 98.0
+margin_bottom = 80.0
 alignment = 1
 
 [node name="BuyShops" type="Button" parent="VBox/HBox4"]
@@ -117,15 +109,15 @@ margin_bottom = 20.0
 text = "Buy Auto"
 
 [node name="Produce" type="Button" parent="VBox"]
-margin_top = 102.0
+margin_top = 84.0
 margin_right = 202.0
-margin_bottom = 122.0
+margin_bottom = 104.0
 text = "Produce"
 
 [node name="ProductionProgress" type="ProgressBar" parent="VBox"]
-margin_top = 126.0
+margin_top = 108.0
 margin_right = 202.0
-margin_bottom = 146.0
+margin_bottom = 128.0
 rect_min_size = Vector2( 0, 20 )
 value = 17.4
 percent_visible = false
@@ -139,8 +131,3 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="max" type="Label" parent="VBox"]
-margin_top = 150.0
-margin_right = 202.0
-margin_bottom = 164.0

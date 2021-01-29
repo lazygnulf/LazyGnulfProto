@@ -7,7 +7,7 @@ func _ready():
 	_update_ui()
 
 func _update_ui() -> void:
-	balanceDisplay.text = str(Bank.balance)
+	balanceDisplay.text = str(Util.float_to_string(Bank.balance, Util.NumberFormat.NAME))
 
 func _on_balance_changed(new_balance: float) -> void:
 	_update_ui()
