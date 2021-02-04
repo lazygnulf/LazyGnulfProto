@@ -41,6 +41,10 @@ Util="*res://Autoload/util.gd"
 
 window/size/height=1118
 
+[editor_plugins]
+
+enabled=PoolStringArray( "Todo_Manager" )
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
