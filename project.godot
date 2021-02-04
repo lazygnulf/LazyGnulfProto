@@ -26,12 +26,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Shop Test"
+config/name="LazyGnulfProto"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
+Config="*res://Autoload/config.gd"
 Signals="*res://Autoload/signals.gd"
 Bank="*res://Autoload/bank.gd"
 Util="*res://Autoload/util.gd"
